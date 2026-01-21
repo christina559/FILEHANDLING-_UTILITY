@@ -1,0 +1,46 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class FileHandlingUtility {
+
+    static String fileName = "sample.txt";
+
+    // Write to file
+    static void writeFile() throws IOException {
+        FileWriter fw = new FileWriter(fileName);
+        fw.write("Hello, this is a file handling task.\n");
+        fw.write("Internship Task - CODTECH");
+        fw.close();
+        System.out.println("File written successfully.");
+    }
+
+    // Read file
+    static void readFile() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        String line;
+        System.out.println("\nReading file:");
+        while ((line = br.readLine()) != null) {
+            System.out.println(line);
+        }
+        br.close();
+    }
+
+    // Modify (append) file
+    static void modifyFile() throws IOException {
+        FileWriter fw = new FileWriter(fileName, true);
+        fw.write("\nFile modified successfully.");
+        fw.close();
+        System.out.println("File modified.");
+    }
+
+    public static void main(String[] args) {
+        try {
+            writeFile();
+            readFile();
+            modifyFile();
+            readFile();
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
